@@ -10,10 +10,20 @@ const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'GOWTHAM MOSES';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'GMElectrician@2804';
 const uploadsDirectory = path.join(__dirname, 'uploads');
 const dataFile = path.join(__dirname, 'work.json');
+const siteFile = path.join(__dirname, 'site.json');
 const sessions = new Set();
+
+const defaultSiteSettings = {
+  businessName: 'GM ELE WORK',
+  heroTitle: 'Powering spaces.',
+  heroHighlight: 'Building trust.',
+  heroText: 'Professional electrical work for homes, shops and commercial spaces. Safe installations, clean finishing, and work you can rely on.',
+  whatsappUrl: 'https://wa.me/'
+};
 
 fs.mkdirSync(uploadsDirectory, { recursive: true });
 if (!fs.existsSync(dataFile)) fs.writeFileSync(dataFile, '[]');
+if (!fs.existsSync(siteFile)) fs.writeFileSync(siteFile, JSON.stringify(defaultSiteSettings, null, 2));
 
 function readWork() {
   return JSON.parse(fs.readFileSync(dataFile, 'utf8'));
@@ -21,6 +31,14 @@ function readWork() {
 
 function saveWork(items) {
   fs.writeFileSync(dataFile, JSON.stringify(items, null, 2));
+}
+
+function readSiteSettings() {
+  return { ...defaultSiteSettings, ...JSON.parse(fs.readFileSync(siteFile, 'utf8')) };
+}
+
+function saveSiteSettings(settings) {
+  fs.writeFileSync(siteFile, JSON.stringify(settings, null, 2));
 }
 
 const storage = multer.diskStorage({
@@ -51,6 +69,7 @@ function ownerOnly(request, response, next) {
 }
 
 app.get('/api/work', (request, response) => response.json(readWork()));
+app.get('/api/site', (request, response) => response.json(readSiteSettings()));
 
 app.post('/api/login', (request, response) => {
   const { username, password } = request.body;
@@ -60,6 +79,23 @@ app.post('/api/login', (request, response) => {
   const token = crypto.randomUUID();
   sessions.add(token);
   response.json({ token });
+});
+
+app.put('/api/site', ownerOnly, (request, response) => {
+  const current = readSiteSettings();
+  const clean = value => String(value || '').trim();
+  const settings = {
+    businessName: clean(request.body.businessName) || current.businessName,
+    heroTitle: clean(request.body.heroTitle) || current.heroTitle,
+    heroHighlight: clean(request.body.heroHighlight) || current.heroHighlight,
+    heroText: clean(request.body.heroText) || current.heroText,
+    whatsappUrl: clean(request.body.whatsappUrl) || current.whatsappUrl
+  };
+  if (!/^https:\/\/(wa\.me|api\.whatsapp\.com)\//i.test(settings.whatsappUrl)) {
+    return response.status(400).json({ error: 'Enter a valid WhatsApp link starting with https://wa.me/.' });
+  }
+  saveSiteSettings(settings);
+  response.json(settings);
 });
 
 app.post('/api/work', ownerOnly, upload.single('media'), (request, response) => {
