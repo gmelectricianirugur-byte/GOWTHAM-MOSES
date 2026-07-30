@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owner Upload | ELE WORK</title><link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-page">
+  <header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">&#9889;</span><span>ELE<span class="brand-light">WORK</span></span></a><nav class="nav-links"><a href="index.html">Home</a></nav></header>
+  <main class="admin-wrap">
+    <section class="admin-card" id="login-card"><p class="eyebrow"><span></span> OWNER ACCESS</p><h1>Upload your work</h1><p>Only the owner can add or remove photos and videos.</p><form id="login-form"><label>Username<input name="username" required autocomplete="username"></label><label>Password<input name="password" type="password" required autocomplete="current-password"></label><button class="button primary">Owner login <span>↗</span></button><p class="form-message" id="login-message"></p></form></section>
+    <section class="admin-card hidden" id="dashboard"><p class="eyebrow"><span></span> OWNER DASHBOARD</p><h1>Add a photo or video</h1><form id="upload-form"><label>Project title<input name="title" placeholder="Example: House wiring"></label><label>Category<input name="category" placeholder="Example: Residential"></label><label>Photo or video<input name="media" type="file" accept="image/*,video/*" required></label><button class="button primary">Upload work <span>↗</span></button><p class="form-message" id="upload-message"></p></form><div id="admin-gallery" class="admin-gallery"></div></section>
+  </main><script src="admin.js"></script>
+</body></html>
