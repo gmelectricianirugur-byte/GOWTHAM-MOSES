@@ -6,8 +6,8 @@ const crypto = require('crypto');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'owner';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'change-me-now';
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'GOWTHAM MOSES';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'GMElectrician@2804';
 const uploadsDirectory = path.join(__dirname, 'uploads');
 const dataFile = path.join(__dirname, 'work.json');
 const sessions = new Set();
