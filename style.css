@@ -110,6 +110,91 @@ video.work-card,
     cursor: pointer
 }
 
+.modal-open {
+    overflow: hidden
+}
+
+.login-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    padding: 20px
+}
+
+.login-modal.hidden {
+    display: none
+}
+
+.login-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: #101610a8;
+    backdrop-filter: blur(4px)
+}
+
+.login-modal__card {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 460px);
+    background: #fff;
+    border-radius: 12px;
+    padding: 38px;
+    box-shadow: 0 24px 70px #10161066
+}
+
+.login-modal__card h2 {
+    margin: 0 0 10px;
+    font: 700 38px/1 Outfit, sans-serif;
+    letter-spacing: -1.5px
+}
+
+.login-modal__card>p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6
+}
+
+.login-modal__card form {
+    display: grid;
+    gap: 16px;
+    margin-top: 26px
+}
+
+.login-modal__card label {
+    display: grid;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 700
+}
+
+.login-modal__card input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    font: 14px 'DM Sans', sans-serif
+}
+
+.login-modal__card .button {
+    border: 0;
+    cursor: pointer;
+    justify-self: start
+}
+
+.login-modal__close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer
+}
+
 * {
     box-sizing: border-box
 }
@@ -1037,6 +1122,14 @@ body {
     .admin-card h1 {
         font-size: 32px;
         letter-spacing: -1px
+    }
+
+    .login-modal__card {
+        padding: 30px 22px
+    }
+
+    .login-modal__card h2 {
+        font-size: 32px
     }
 
     .admin-gallery article {
