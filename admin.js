@@ -11,7 +11,11 @@ async function readApiResponse(response) {
 }
 
 function showDashboard() {
-  loginCard.classList.add('hidden'); dashboard.classList.remove('hidden'); loadItems();
+  loginCard.classList.add('hidden');
+  dashboard.classList.remove('hidden');
+  document.querySelector('#partners-dashboard').classList.remove('hidden');
+  loadItems();
+  loadPartners();
 }
 if (token) showDashboard();
 
@@ -45,6 +49,21 @@ document.querySelector('#upload-form').addEventListener('submit', async event =>
   }
 });
 
+document.querySelector('#partner-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  const partnerMessage = document.querySelector('#partner-message');
+  partnerMessage.textContent = '';
+  try {
+    const details = Object.fromEntries(new FormData(event.currentTarget));
+    await readApiResponse(await fetch('/api/partners', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(details) }));
+    partnerMessage.textContent = 'Partner added successfully.';
+    event.currentTarget.reset();
+    loadPartners();
+  } catch (error) {
+    partnerMessage.textContent = error.message || 'Could not add partner.';
+  }
+});
+
 async function loadItems() {
   const gallery = document.querySelector('#admin-gallery');
   try {
@@ -61,5 +80,24 @@ async function loadItems() {
     }));
   } catch (error) {
     gallery.innerHTML = `<p>${error.message || 'Unable to load uploads.'}</p>`;
+  }
+}
+
+async function loadPartners() {
+  const partnerList = document.querySelector('#admin-partners');
+  try {
+    const partners = await readApiResponse(await fetch('/api/partners'));
+    partnerList.innerHTML = partners.map(partner => `<article><strong>${partner.name}</strong><small>${partner.type || 'Partner'}</small><button data-id="${partner.id}">Remove</button></article>`).join('') || '<p>No partners added yet.</p>';
+    partnerList.querySelectorAll('button').forEach(button => button.addEventListener('click', async () => {
+      if (!confirm('Remove this partner?')) return;
+      try {
+        await readApiResponse(await fetch(`/api/partners/${button.dataset.id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } }));
+        loadPartners();
+      } catch (error) {
+        document.querySelector('#partner-message').textContent = error.message || 'Could not remove this partner.';
+      }
+    }));
+  } catch (error) {
+    partnerList.innerHTML = `<p>${error.message || 'Unable to load partners.'}</p>`;
   }
 }

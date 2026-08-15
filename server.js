@@ -11,6 +11,7 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'GMElectrician@2804';
 const uploadsDirectory = path.join(__dirname, 'uploads');
 const dataFile = path.join(__dirname, 'work.json');
 const siteFile = path.join(__dirname, 'site.json');
+const partnersFile = path.join(__dirname, 'partners.json');
 const sessions = new Set();
 
 const defaultSiteSettings = {
@@ -20,10 +21,16 @@ const defaultSiteSettings = {
   heroText: 'Professional electrical work for homes, shops and commercial spaces. Safe installations, clean finishing, and work you can rely on.',
   whatsappUrl: 'https://wa.me/'
 };
+const defaultPartners = [
+  { id: crypto.randomUUID(), name: 'VoltPro Electricals', type: 'Electrical supplier', description: 'Quality cables, switches, lighting and electrical materials for every type of installation.', location: 'Your City, India', instagramUrl: 'https://instagram.com/', whatsappUrl: 'https://wa.me/', youtubeUrl: '', createdAt: new Date().toISOString() },
+  { id: crypto.randomUUID(), name: 'Luma Lighting Studio', type: 'Lighting partner', description: 'Creative LED and decorative lighting solutions that bring every space to life.', location: 'Your City, India', instagramUrl: 'https://instagram.com/', whatsappUrl: '', youtubeUrl: 'https://youtube.com/', createdAt: new Date().toISOString() },
+  { id: crypto.randomUUID(), name: 'SunGrid Energy', type: 'Solar solutions', description: 'Reliable solar installation and energy-saving systems for homes and businesses.', location: 'Your City, India', instagramUrl: '', whatsappUrl: 'https://wa.me/', youtubeUrl: 'https://youtube.com/', createdAt: new Date().toISOString() }
+];
 
 fs.mkdirSync(uploadsDirectory, { recursive: true });
 if (!fs.existsSync(dataFile)) fs.writeFileSync(dataFile, '[]');
 if (!fs.existsSync(siteFile)) fs.writeFileSync(siteFile, JSON.stringify(defaultSiteSettings, null, 2));
+if (!fs.existsSync(partnersFile)) fs.writeFileSync(partnersFile, JSON.stringify(defaultPartners, null, 2));
 
 function readWork() {
   return JSON.parse(fs.readFileSync(dataFile, 'utf8'));
@@ -31,6 +38,14 @@ function readWork() {
 
 function saveWork(items) {
   fs.writeFileSync(dataFile, JSON.stringify(items, null, 2));
+}
+
+function readPartners() {
+  return JSON.parse(fs.readFileSync(partnersFile, 'utf8'));
+}
+
+function savePartners(partners) {
+  fs.writeFileSync(partnersFile, JSON.stringify(partners, null, 2));
 }
 
 function readSiteSettings() {
@@ -69,6 +84,7 @@ function ownerOnly(request, response, next) {
 }
 
 app.get('/api/work', (request, response) => response.json(readWork()));
+app.get('/api/partners', (request, response) => response.json(readPartners()));
 app.get('/api/site', (request, response) => response.json(readSiteSettings()));
 
 app.post('/api/login', (request, response) => {
@@ -114,6 +130,27 @@ app.post('/api/work', ownerOnly, upload.single('media'), (request, response) => 
   response.status(201).json(item);
 });
 
+app.post('/api/partners', ownerOnly, (request, response) => {
+  const clean = value => String(value || '').trim();
+  const name = clean(request.body.name);
+  if (!name) return response.status(400).json({ error: 'Enter the partner name.' });
+  const partner = {
+    id: crypto.randomUUID(),
+    name,
+    type: clean(request.body.type) || 'Trusted partner',
+    description: clean(request.body.description),
+    location: clean(request.body.location),
+    instagramUrl: clean(request.body.instagramUrl),
+    whatsappUrl: clean(request.body.whatsappUrl),
+    youtubeUrl: clean(request.body.youtubeUrl),
+    createdAt: new Date().toISOString()
+  };
+  const partners = readPartners();
+  partners.unshift(partner);
+  savePartners(partners);
+  response.status(201).json(partner);
+});
+
 app.delete('/api/work/:id', ownerOnly, (request, response) => {
   const items = readWork();
   const item = items.find(entry => entry.id === request.params.id);
@@ -121,6 +158,13 @@ app.delete('/api/work/:id', ownerOnly, (request, response) => {
   const filePath = path.join(uploadsDirectory, path.basename(item.url));
   if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
   saveWork(items.filter(entry => entry.id !== item.id));
+  response.status(204).end();
+});
+
+app.delete('/api/partners/:id', ownerOnly, (request, response) => {
+  const partners = readPartners();
+  if (!partners.some(partner => partner.id === request.params.id)) return response.status(404).json({ error: 'Partner not found.' });
+  savePartners(partners.filter(partner => partner.id !== request.params.id));
   response.status(204).end();
 });
 

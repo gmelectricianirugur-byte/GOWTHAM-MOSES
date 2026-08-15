@@ -18,6 +18,20 @@ if (gallery) {
   }).catch(() => {});
 }
 
+const partnerList = document.querySelector('#partner-list');
+if (partnerList) {
+  fetch('/api/partners').then(response => response.ok ? response.json() : []).then(partners => {
+    partnerList.innerHTML = partners.map((partner, index) => {
+      const links = [['Instagram', partner.instagramUrl], ['WhatsApp', partner.whatsappUrl], ['YouTube', partner.youtubeUrl]]
+        .filter(([, url]) => url)
+        .map(([label, url]) => `<a href="${url}" target="_blank" rel="noopener">${label} &#8599;</a>`).join('');
+      const initial = partner.name.charAt(0).toUpperCase();
+      const primaryUrl = [partner.instagramUrl, partner.whatsappUrl, partner.youtubeUrl].find(Boolean);
+      return `<article class="partner-card"><div class="partner-number">${String(index + 1).padStart(2, '0')}</div><div class="partner-logo orange">${initial}</div><div class="partner-info"><p class="partner-type">${partner.type}</p><h2>${partner.name}</h2><p>${partner.description || 'A trusted ELE Work partner.'}</p><div class="partner-meta"><span>${partner.location ? `&#128205; ${partner.location}` : ''}</span>${links}</div></div>${primaryUrl ? `<a class="round-arrow" href="${primaryUrl}" target="_blank" rel="noopener" aria-label="Visit ${partner.name}">&#8599;</a>` : ''}</article>`;
+    }).join('');
+  }).catch(() => {});
+}
+
 const loginModal = document.querySelector('#owner-login');
 const loginOpeners = document.querySelectorAll('[data-login-open]');
 const loginClosers = document.querySelectorAll('[data-login-close]');
