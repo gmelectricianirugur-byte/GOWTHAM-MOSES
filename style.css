@@ -816,7 +816,7 @@ body {
     max-width: none;
     margin: 0;
     padding: 0 max(28px, calc((100vw - 1184px)/2));
-    background: #4d8416;
+    background: #a427c4;
     box-shadow: 0 5px 20px #16330940;
     overflow: hidden
 }
@@ -909,12 +909,15 @@ body {
 }
 
 .footer-bottom span {
-    font-size: 0
+    font-size: 11px
 }
 
 .footer-bottom span:after {
-    content: "ELE WORK · Electrical Solutions";
-    font-size: 11px
+    content: "©️GM ELE WORK. All rights reserved.";
+    display: grid;
+    place-items: center;
+    padding-left: 500px;
+    font-size: 11px;
 }
 
 @keyframes green-wave {
