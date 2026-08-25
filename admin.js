@@ -100,4 +100,39 @@ async function loadPartners() {
   } catch (error) {
     partnerList.innerHTML = `<p>${error.message || 'Unable to load partners.'}</p>`;
   }
+
+  function sendNumber() {
+    // 1. Get the number value
+    const number = document.getElementById('whatsappNumber').value;
+
+    // 2. Define the fixed base URL
+    const baseUrl = "https://wa.me/+91";
+
+    // 3. Navigate to the combined URL
+    if (number) {
+      window.location.href = baseUrl + number;
+    } else {
+      alert("Please enter a number");
+    }
+  }
+  let timer;
+  const IDLE_TIMEOUT = 300; // 5 minutes in seconds
+
+  function resetTimer() {
+    clearTimeout(timer);
+    timer = setTimeout(logoutUser, IDLE_TIMEOUT * 1000);
+  }
+
+  function logoutUser() {
+    // Redirect to a logout script or submit a form
+    window.location.href = 'logout.php';
+  }
+
+  // Attach event listeners to reset the timer on activity
+  document.addEventListener('mousemove', resetTimer);
+  document.addEventListener('keypress', resetTimer);
+  document.addEventListener('load', resetTimer);
+
+  // Start the timer initially
+  resetTimer();
 }

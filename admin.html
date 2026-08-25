@@ -40,14 +40,14 @@
       <p class="eyebrow"><span></span> PARTNERS</p>
       <h1>Add a partner</h1>
       <p>Add and remove partners just like your photos and videos.</p>
-      <form id="partner-form"><label>Partner name<input name="name" placeholder="Example: VoltPro Electricals"
-            required></label><label>Partner type<input name="type"
-            placeholder="Example: Electrical supplier"></label><label>Description<input name="description"
-            placeholder="What does this partner provide?"></label><label>Location<input name="location"
-            placeholder="Example: Chennai, India"></label><label>Instagram link<input name="instagramUrl" type="url"
-            placeholder="https://instagram.com/yourpartner"></label><label>WhatsApp link<input name="whatsappUrl"
-            type="url" placeholder="https://wa.me/919999999999"></label><label>YouTube link<input name="youtubeUrl"
-            type="url" placeholder="https://youtube.com/@yourpartner"></label><button class="button primary">Add partner
+      <form id="partner-form">
+        <label>Partner name<input name="name" placeholder="Example: VoltPro Electricals" required></label>
+        <label>Partner type<input name="type" placeholder="Example: Electrical supplier"></label>
+        <label>Description<input name="description" placeholder="What does this partner provide?"></label>
+        <label>Location<input name="location" placeholder="Example: Chennai, India"></label>
+        <label>WhatsApp Number<input type="whatsappnumber" id="whatsappNumber" placeholder="+919999999999"></label>
+        <label>Add Partner Image<input name="image" type="file" accept="image/*" required></label>
+        <button class="button primary">Add partner
           <span>&#8599;</span></button>
         <p class="form-message" id="partner-message"></p>
       </form>
