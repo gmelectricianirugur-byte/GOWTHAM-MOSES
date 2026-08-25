@@ -101,16 +101,16 @@ async function loadPartners() {
     partnerList.innerHTML = `<p>${error.message || 'Unable to load partners.'}</p>`;
   }
 
-  function sendNumber() {
+  function sendWhatsappNumber() {
     // 1. Get the number value
-    const number = document.getElementById('whatsappNumber').value;
+    const whatsappnumber = document.getElementById('whatsappNumber').value;
 
     // 2. Define the fixed base URL
     const baseUrl = "https://wa.me/+91";
 
     // 3. Navigate to the combined URL
-    if (number) {
-      window.location.href = baseUrl + number;
+    if (whatsappnumber) {
+      window.location.href = baseUrl + whatsappnumber;
     } else {
       alert("Please enter a number");
     }
@@ -134,5 +134,5 @@ async function loadPartners() {
   document.addEventListener('load', resetTimer);
 
   // Start the timer initially
-  resetTimer();
+  resetTimer(reloadadmin.html);
 }
