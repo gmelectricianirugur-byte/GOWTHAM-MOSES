@@ -14,102 +14,6 @@ video.work-card,
     object-fit: cover
 }
 
-.admin-page {
-    min-height: 100vh;
-    background: #eef0e9
-}
-
-.admin-wrap {
-    max-width: 680px;
-    margin: auto;
-    padding: 75px 20px
-}
-
-.admin-card {
-    background: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 15px 40px #19300f15
-}
-
-.admin-card h1 {
-    font: 700 40px/1 Outfit, sans-serif;
-    letter-spacing: -1.5px;
-    margin: 0 0 10px
-}
-
-.admin-card>p {
-    color: var(--muted);
-    line-height: 1.6
-}
-
-.admin-card form {
-    display: grid;
-    gap: 17px;
-    margin-top: 28px
-}
-
-.admin-card label {
-    display: grid;
-    gap: 7px;
-    font-size: 13px;
-    font-weight: 700
-}
-
-.admin-card input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--line);
-    border-radius: 5px;
-    font: 14px 'DM Sans', sans-serif
-}
-
-.admin-card .button {
-    justify-self: start;
-    border: 0;
-    cursor: pointer
-}
-
-.hidden {
-    display: none
-}
-
-.form-message {
-    font-size: 13px;
-    color: #719e19;
-    margin: 0
-}
-
-.admin-gallery {
-    display: grid;
-    gap: 10px;
-    margin-top: 32px
-}
-
-.admin-gallery article {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 13px;
-    background: #f4f6ef;
-    border-radius: 5px
-}
-
-.admin-gallery small {
-    color: var(--muted);
-    flex: 1
-}
-
-.admin-gallery button {
-    border: 0;
-    background: #ffe0d7;
-    color: #8e311b;
-    border-radius: 4px;
-    padding: 8px 11px;
-    font-weight: 700;
-    cursor: pointer
-}
-
 .modal-open {
     overflow: hidden
 }
@@ -314,16 +218,14 @@ video {
     margin-right: 8px
 }
 
-.hero h1,
-.partners-hero h1 {
+.hero h1 {
     font: 700 clamp(49px, 6vw, 82px)/.98 Outfit, sans-serif;
     letter-spacing: -3.2px;
     margin: 0
 }
 
 .hero h1 em,
-h2 em,
-.partners-hero em {
+h2 em {
     color: #78a716;
     font-style: normal
 }
@@ -672,139 +574,6 @@ footer {
     text-decoration: none
 }
 
-.partners-hero {
-    padding: 93px 28px 105px;
-    max-width: 1240px;
-    margin: auto;
-    background: radial-gradient(circle at 80% 20%, #dff4b22e, transparent 20%)
-}
-
-.partners-hero p:last-child {
-    max-width: 440px;
-    color: var(--muted);
-    line-height: 1.7;
-    font-size: 16px;
-    margin: 25px 0 0
-}
-
-.partner-list {
-    padding-top: 20px
-}
-
-.partner-card {
-    display: grid;
-    grid-template-columns: 50px 93px 1fr 48px;
-    align-items: center;
-    gap: 28px;
-    padding: 30px 0;
-    border-top: 1px solid var(--line)
-}
-
-.partner-card:last-child {
-    border-bottom: 1px solid var(--line)
-}
-
-.partner-number {
-    font: 700 13px Outfit, sans-serif;
-    color: #89908a
-}
-
-.partner-logo {
-    height: 73px;
-    width: 73px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    font: 700 35px Outfit, sans-serif
-}
-
-.orange {
-    background: #ffe1d5;
-    color: #db542a
-}
-
-.blue {
-    background: #dce9ff;
-    color: #3369ba
-}
-
-.green {
-    background: #dff0d5;
-    color: #519034
-}
-
-.partner-type {
-    font-size: 10px;
-    letter-spacing: 1.3px;
-    font-weight: 700;
-    color: #79a914;
-    margin: 0
-}
-
-.partner-info h2 {
-    font: 600 28px Outfit, sans-serif;
-    letter-spacing: -.8px;
-    margin: 6px 0
-}
-
-.partner-info>p:not(.partner-type) {
-    color: var(--muted);
-    font-size: 14px;
-    margin: 0;
-    line-height: 1.6
-}
-
-.partner-meta {
-    display: flex;
-    gap: 20px;
-    margin-top: 13px;
-    align-items: center
-}
-
-.partner-meta span,
-.partner-meta a {
-    font-size: 12px;
-    color: #657068;
-    text-decoration: none
-}
-
-.partner-meta a {
-    font-weight: 700;
-    color: var(--ink)
-}
-
-.round-arrow {
-    border: 1px solid var(--ink);
-    border-radius: 50%;
-    height: 43px;
-    width: 43px;
-    display: grid;
-    place-items: center;
-    text-decoration: none;
-    color: var(--ink);
-    font-size: 19px
-}
-
-.partner-cta {
-    max-width: 1184px;
-    margin: 25px auto 90px;
-    background: #e4f3b9;
-    padding: 52px 55px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between
-}
-
-.partner-cta h2 {
-    font: 700 47px/.98 Outfit, sans-serif;
-    letter-spacing: -2px;
-    margin: 0
-}
-
-.partner-cta h2 em {
-    color: #74a317
-}
-
 body {
     padding-top: 84px
 }
@@ -962,14 +731,6 @@ body {
         display: flex
     }
 
-    .admin-page .nav-links {
-        position: static;
-        display: flex;
-        flex-direction: row;
-        padding: 0;
-        box-shadow: none
-    }
-
     .nav-links a {
         color: #fff;
         padding: 13px 16px
@@ -979,16 +740,14 @@ body {
         color: var(--ink)
     }
 
-    .hero,
-    .partners-hero {
+    .hero {
         min-height: 0;
         grid-template-columns: 1fr;
         gap: 38px;
         padding: 46px 20px 58px
     }
 
-    .hero h1,
-    .partners-hero h1 {
+    .hero h1 {
         font-size: clamp(42px, 13vw, 58px);
         letter-spacing: -2px
     }
@@ -1001,8 +760,7 @@ body {
     .hero-stats,
     .portfolio-top,
     .footer-main,
-    .footer-bottom,
-    .partner-cta {
+    .footer-bottom {
         align-items: flex-start;
         flex-direction: column
     }
@@ -1079,54 +837,6 @@ body {
         margin-top: 28px
     }
 
-    .partner-card {
-        grid-template-columns: 42px 62px 1fr;
-        gap: 14px;
-        padding: 24px 0
-    }
-
-    .partner-logo {
-        width: 58px;
-        height: 58px;
-        font-size: 27px
-    }
-
-    .partner-info h2 {
-        font-size: 23px
-    }
-
-    .partner-meta {
-        flex-wrap: wrap;
-        gap: 8px 14px
-    }
-
-    .round-arrow {
-        display: none
-    }
-
-    .partner-cta {
-        margin: 0 20px 60px;
-        padding: 36px 24px;
-        gap: 26px
-    }
-
-    .partner-cta h2 {
-        font-size: clamp(35px, 11vw, 47px)
-    }
-
-    .admin-wrap {
-        padding: 38px 16px
-    }
-
-    .admin-card {
-        padding: 26px 20px
-    }
-
-    .admin-card h1 {
-        font-size: 32px;
-        letter-spacing: -1px
-    }
-
     .login-modal__card {
         padding: 30px 22px
     }
@@ -1135,14 +845,6 @@ body {
         font-size: 32px
     }
 
-    .admin-gallery article {
-        align-items: flex-start;
-        flex-wrap: wrap
-    }
-
-    .admin-gallery small {
-        min-width: 50%
-    }
 }
 
 @media (min-width:761px) and (max-width:980px) {
@@ -1170,10 +872,6 @@ body {
         height: 285px
     }
 
-    .partner-cta {
-        margin-left: 28px;
-        margin-right: 28px
-    }
 }
 
 @media (max-width:380px) {
@@ -1185,13 +883,6 @@ body {
         width: 100%
     }
 
-    .partner-card {
-        grid-template-columns: 1fr
-    }
-
-    .partner-number {
-        display: none
-    }
 }
 
 @media (prefers-reduced-motion: reduce) {

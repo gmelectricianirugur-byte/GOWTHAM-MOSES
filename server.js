@@ -134,6 +134,10 @@ app.post('/api/partners', ownerOnly, (request, response) => {
   const clean = value => String(value || '').trim();
   const name = clean(request.body.name);
   if (!name) return response.status(400).json({ error: 'Enter the partner name.' });
+  const whatsappNumber = clean(request.body.whatsappNumber).replace(/\D/g, '');
+  if (whatsappNumber && (whatsappNumber.length < 7 || whatsappNumber.length > 15)) {
+    return response.status(400).json({ error: 'Enter a valid WhatsApp number with country code.' });
+  }
   const partner = {
     id: crypto.randomUUID(),
     name,
@@ -141,7 +145,7 @@ app.post('/api/partners', ownerOnly, (request, response) => {
     description: clean(request.body.description),
     location: clean(request.body.location),
     instagramUrl: clean(request.body.instagramUrl),
-    whatsappUrl: clean(request.body.whatsappUrl),
+    whatsappUrl: whatsappNumber ? `https://wa.me/${whatsappNumber}` : clean(request.body.whatsappUrl),
     youtubeUrl: clean(request.body.youtubeUrl),
     createdAt: new Date().toISOString()
   };
