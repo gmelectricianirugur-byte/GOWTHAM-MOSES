@@ -12,7 +12,10 @@
   <header class="site-header"><a class="brand" href="index.html"><span class="brand-mark"><img
           src="https://i.redd.it/mc7lgfh3rzkh1.png" alt="GM LOGO" /></span><span> ⚡GM
         ELE<span class="brand-light">WORK</span></span></a>
-    <nav class="nav-links"><a href="index.html">Home</a></nav>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a onclick="logoutUser()" href="admin.html">Logout</a>
+    </nav>
   </header>
   <main class="admin-wrap">
     <section class="admin-card" id="login-card">
@@ -47,7 +50,7 @@
         <label>Location<input name="location" placeholder="Example: Chennai, India"></label>
         <label>whatsappnumber<input name="whatsappnumber" placeholder="Example: 9999999999" fixed="https://wa.me/+91" <a
             class="round-arrow" href="https://wa.me/+91(whatsappnumber)" target="_blank" rel="noopener"
-            aria-label="Visit VoltPro Electricals">↗</a>></label>
+            aria-label="Visit VoltPro Electricals">↗</a></label>
         <label>Add Partner Image<input name="image" type="file" accept="image/*" required></label>
         <button class="button primary">Add partner
           <span>&#8599;</span></button>
