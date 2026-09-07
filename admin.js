@@ -109,3 +109,35 @@ function logoutUser() {
 }
 
 document.querySelector('#logout-button').addEventListener('click', logoutUser);
+
+var IDLE_TIMEOUT = 15; // minutes (timeout duration)
+var _idleSecondsCounter = 0;
+
+// Event listeners to reset the idle counter
+document.onclick = function () {
+  _idleSecondsCounter = 0;
+};
+document.onmousemove = function () {
+  _idleSecondsCounter = 0;
+};
+document.onkeypress = function () {
+  _idleSecondsCounter = 0;
+};
+
+// Check idle time every second
+window.setInterval(CheckIdleTime, 1000);
+
+function CheckIdleTime() {
+  _idleSecondsCounter++;
+
+  // Convert minutes to seconds for comparison
+  var idleSeconds = IDLE_TIMEOUT * 60;
+
+  if (_idleSecondsCounter >= idleSeconds) {
+    // User is idle, perform logout
+    window.location.href = "admin.html";
+    // Replace with your logout URL
+    // Or submit a logout form:
+    // document.getElementById('logout-form').submit();
+  }
+}

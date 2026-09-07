@@ -380,13 +380,14 @@ h2 em {
 }
 
 .services {
-    background: #eef0e9;
+    background: #ffffff;
     max-width: none;
     padding-left: max(28px, calc((100vw - 1184px)/2));
     padding-right: max(28px, calc((100vw - 1184px)/2))
 }
 
 .service-grid {
+    border-radius: 25px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin-top: 44px;
@@ -396,22 +397,26 @@ h2 em {
 .service-grid article {
     padding: 28px 23px;
     background: var(--paper);
-    border-radius: 5px
+    border-radius: 30px
 }
 
 .service-icon {
+    margin-top: 8px;
+    margin-left: 20px;
     color: #75a40f;
-    font-size: 30px;
-    height: 45px
+    font-size: 40px;
+    height: 50px
 }
 
 .service-grid h3 {
-    font: 700 19px Outfit, sans-serif;
+    text-align: center;
+    font: 700 25px Outfit, sans-serif;
     margin: 13px 0 8px
 }
 
 .service-grid p {
-    font-size: 13px;
+    text-align: center;
+    font-size: 15px;
     line-height: 1.6;
     color: var(--muted);
     margin: 0
@@ -443,7 +448,7 @@ h2 em {
     overflow: hidden;
     position: relative;
     border-radius: 6px;
-    background: #ddd
+    background: #ffffff
 }
 
 .work-card.tall {
@@ -477,7 +482,10 @@ h2 em {
 }
 
 .work-card figcaption span {
-    font-size: 10px;
+    font-size: 20px;
+    left: 10px;
+    background-color: #13191496;
+    border-radius: 5px;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--lime);
@@ -485,8 +493,11 @@ h2 em {
 }
 
 .work-card h3 {
+    font-size: 10px;
+    background-color: #00000060;
+    border-radius: 10px;
     margin: 5px 0 0;
-    font: 600 19px Outfit, sans-serif
+    font: 600 16px Outfit, sans-serif
 }
 
 .contact-strip {
@@ -585,7 +596,7 @@ body {
     max-width: none;
     margin: 0;
     padding: 0 max(28px, calc((100vw - 1184px)/2));
-    background: #a427c4;
+    background: #b227c4;
     box-shadow: 0 5px 20px #16330940;
     overflow: hidden
 }
@@ -894,4 +905,84 @@ body {
         animation-duration: .01ms !important;
         transition-duration: .01ms !important
     }
+}
+
+.animated-border-box,
+.animated-border-box-glow {
+    max-height: 200px;
+    max-width: 300px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    z-index: 0;
+    /* Border Radius */
+    border-radius: 20px;
+}
+
+.animated-border-box-glow {
+    overflow: hidden;
+    /* Glow Blur */
+    filter: blur(10px);
+}
+
+.animated-border-box:before,
+.animated-border-box-glow:before {
+    content: '';
+    z-index: -2;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    position: absolute;
+    width: 99999px;
+    height: 99999px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    /*border color, change middle color*/
+    background-image: conic-gradient(rgb(225, 0, 255), #00fc0d, rgba(0, 0, 0, 0) 50%);
+    /* change speed here */
+    animation: rotate 5s linear infinite;
+}
+
+.animated-border-box:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    /* border width */
+    left: 5px;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    /* double the px from the border width left */
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    /*bg color*/
+    background: #ffffff;
+    /*box border radius*/
+    border-radius: 20px;
+}
+
+@keyframes rotate {
+    100% {
+        transform: translate(-50%, -50%) rotate(1turn);
+    }
+}
+
+/*// Border Animation END//*/
+
+
+
+/*// Ignore This //*/
+body {
+    margin: 0px;
+}
+
+.center-box {
+    height: 25vh;
+    width: 36vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
 }
