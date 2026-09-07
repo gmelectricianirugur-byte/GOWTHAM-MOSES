@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="ELE Work partners" />
+  <link rel="icon" href="https://i.redd.it/mc7lgfh3rzkh1.png" />
   <title>My Partners | ELE Work</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +23,7 @@
       aria-expanded="false">☰</button>
     <nav class="nav-links">
       <a href="index.html">Home</a>
-      <a href="index.html#work">My project's Photos &amp; Videos</a>
+      <a href="index.html#work">My Project's Photos &amp; Videos</a>
       <a class="active" href="partners.html">My Partners</a>
       <a href="index.html#owner-login" data-login-open>Owner Login</a>
     </nav>
@@ -77,10 +78,28 @@
       <div>
         <p class="eyebrow"><span></span> WORK WITH US</p>
         <h2>Interested in a<br><em>partnership?</em></h2>
-      </div><a class="button primary" href="https://wa.me/+918870209070" target="_blank" rel="noopener">Get in touch
+      </div><a class="button primary" href="https://wa.me/+918903392804" target="_blank" rel="noopener">Get in touch
         <span>↗</span></a>
     </section>
   </main>
+
+  <section class="login-modal hidden" id="owner-login" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="owner-login-title">
+    <div class="login-modal__backdrop" data-login-close></div>
+    <div class="login-modal__card">
+      <button class="login-modal__close" type="button" aria-label="Close login" data-login-close>&times;</button>
+      <p class="eyebrow"><span></span> OWNER ACCESS</p>
+      <h2 id="owner-login-title">Owner login</h2>
+      <p>Sign in to upload and manage your work photos and videos.</p>
+      <form id="index-login-form">
+        <label>Username<input name="username" required autocomplete="username"></label>
+        <label>Password<input name="password" type="password" required autocomplete="current-password"></label>
+        <button class="button primary" type="submit">Owner login <span>&rarr;</span></button>
+        <p class="form-message" id="index-login-message" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
   <footer>
     <div class="footer-main"><a class="brand" href="index.html"><span class="brand-mark"><img
             src="https://i.redd.it/mc7lgfh3rzkh1.png" /></span><span>⚡GM
