@@ -3,8 +3,9 @@
     --muted: #68716b;
     --paper: #f7f6f1;
     --line: #dce0d8;
-    --lime: #c9ff42;
-    --orange: #ff7548
+    --lime: #5df721;
+    --orange: #ff7548;
+    --violet: #8f00ff;
 }
 
 video.work-card,
@@ -43,9 +44,10 @@ video.work-card,
     z-index: 1;
     width: min(100%, 460px);
     background: #fff;
-    border-radius: 12px;
+    border-radius: 20px;
+    border: 10px solid rgb(2, 255, 14);
     padding: 38px;
-    box-shadow: 0 24px 70px #10161066
+    box-shadow: 0 24px 70px #10161066;
 }
 
 .login-modal__card h2 {
@@ -76,7 +78,7 @@ video.work-card,
 .login-modal__card input {
     width: 100%;
     padding: 12px;
-    border: 1px solid var(--line);
+    border: 2px solid var(--violet);
     border-radius: 5px;
     font: 14px 'DM Sans', sans-serif
 }
@@ -147,8 +149,8 @@ video {
     border-radius: 50%;
     display: grid;
     place-items: center;
-    background: var(--ink);
-    color: var(--lime);
+    background: #797d0700;
+    color: #00000000;
     font-size: 19px
 }
 
@@ -503,20 +505,33 @@ h2 em {
 .contact-strip {
     padding: 80px 28px;
     text-align: center;
-    background: var(--ink);
-    color: white
+    background: #ffffff;
+    color: rgb(0, 0, 0)
 }
 
 .contact-strip p {
-    font-size: 13px;
-    color: #b8c0b9;
-    margin: 0 0 10px
+    font-size: 22px;
+    color: #ffffff;
+    margin: 0 0 10px;
+    background: #000000;
+    border-radius: 20px;
+    padding: 5px 5px;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    max-width: 30%;
+
 }
 
 .contact-strip h2 {
     font: 700 clamp(38px, 5vw, 62px)/1 Outfit, sans-serif;
     letter-spacing: -2px;
-    margin: 0 0 27px
+    margin: 0 0 27px;
+    color: #ffffff;
+    background: #000000;
+    border-radius: 35px;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    max-width: 70%;
 }
 
 .contact-strip h2 em {
