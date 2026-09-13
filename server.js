@@ -22,7 +22,7 @@ const defaultSiteSettings = {
   whatsappUrl: 'https://wa.me/'
 };
 const defaultPartners = [
-  { id: crypto.randomUUID(), name: 'MURUGESON IYASAMY', type: 'ELECTRICIAN & PLUMBER', description: 'Quality cables, switches, lighting and electrical materials for every type of installation.', location: '📍 IRUGUR, COIMBATORE, TN, INDIA', whatsappUrl: 'https://wa.me/+919245104471', createdAt: new Date().toISOString() },
+  { id: crypto.randomUUID(), name: 'MURUGESON IYASAMY', type: 'ELECTRICIAN & PLUMBER', description: 'Quality cables, switches, lighting and electrical materials for every type of installation.', location: ' IRUGUR, COIMBATORE, TN, INDIA', whatsappUrl: 'https://wa.me/+919245104471', createdAt: new Date().toISOString() },
   { id: crypto.randomUUID(), name: 'Luma Lighting Studio', type: 'Lighting partner', description: 'Creative LED and decorative lighting solutions that bring every space to life.', location: 'Your City, India', instagramUrl: 'https://instagram.com/', whatsappUrl: '', youtubeUrl: 'https://youtube.com/', createdAt: new Date().toISOString() },
   { id: crypto.randomUUID(), name: 'SunGrid Energy', type: 'Solar solutions', description: 'Reliable solar installation and energy-saving systems for homes and businesses.', location: 'Your City, India', instagramUrl: '', whatsappUrl: 'https://wa.me/', youtubeUrl: 'https://youtube.com/', createdAt: new Date().toISOString() }
 ];
